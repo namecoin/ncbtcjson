@@ -46,9 +46,41 @@ func NewNameShowCmd(name string, options *NameShowOptions) *NameShowCmd {
 	}
 }
 
+// NameScanOptions represents the optional options struct provided with a
+// NameScanCmd command.
+type NameScanOptions struct {
+	NameEncoding  Encoding `json:"nameEncoding,omitempty"`
+	ValueEncoding Encoding `json:"valueEncoding,omitempty"`
+	MinConf       int32    `json:"minConf,omitempty"`
+	MaxConf       int32    `json:"maxConf,omitempty"`
+	Prefix        string   `json:"prefix,omitempty"`
+	RegExp        string   `json:"regexp,omitempty"`
+}
+
+// NameScanCmd defines the name_scan JSON-RPC command.
+type NameScanCmd struct {
+	Start   string
+	Count   *uint32
+	Options *NameScanOptions
+}
+
+// NewNameScanCmd returns a new instance which can be used to issue a
+// name_scan JSON-RPC command.
+//
+// The parameters which are pointers indicate they are optional.  Passing nil
+// for optional parameters will use the default value.
+func NewNameScanCmd(start string, count *uint32, options *NameScanOptions) *NameScanCmd {
+	return &NameScanCmd{
+		Start:   start,
+		Count:   count,
+		Options: options,
+	}
+}
+
 func init() {
 	// No special flags for commands in this file.
 	flags := btcjson.UsageFlag(0)
 
 	btcjson.MustRegisterCmd("name_show", (*NameShowCmd)(nil), flags)
+	btcjson.MustRegisterCmd("name_scan", (*NameScanCmd)(nil), flags)
 }

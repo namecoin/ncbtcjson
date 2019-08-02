@@ -21,3 +21,6 @@ type NameShowResult struct {
 	ExpiresIn       int32                         `json:"expires_in"`
 	Expired         bool                          `json:"expired"`
 }
+
+// NameScanResult models the data from the name_scan command.
+type NameScanResult []NameShowResult
