@@ -26,6 +26,7 @@ const (
 type NameShowOptions struct {
 	NameEncoding  Encoding `json:"nameEncoding,omitempty"`
 	ValueEncoding Encoding `json:"valueEncoding,omitempty"`
+	StreamID      string   `json:"streamID,omitempty"`
 }
 
 // NameShowCmd defines the name_show JSON-RPC command.
