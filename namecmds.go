@@ -9,7 +9,7 @@
 package ncbtcjson
 
 import (
-	"github.com/btcsuite/btcd/btcjson"
+	"github.com/namecoin/btcd/btcjson"
 )
 
 // Encoding represents an encoding for name identifiers and values.
