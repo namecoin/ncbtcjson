@@ -8,8 +8,10 @@
 
 package ncbtcjson
 
+// Must use the btcsuite fork of btcd for this import; using the namecoin fork
+// will cause unregistered command errors.
 import (
-	"github.com/namecoin/btcd/btcjson"
+	"github.com/btcsuite/btcd/btcjson"
 )
 
 // Encoding represents an encoding for name identifiers and values.
