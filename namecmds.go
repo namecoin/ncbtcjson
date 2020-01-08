@@ -43,6 +43,13 @@ type NameShowCmd struct {
 // The parameters which are pointers indicate they are optional.  Passing nil
 // for optional parameters will use the default value.
 func NewNameShowCmd(name string, options *NameShowOptions) *NameShowCmd {
+	// Don't send the Options parameter if it's empty.  This saves some
+	// space on the wire, and also ensures compatibility with old Namecoin
+	// Core versions that don't support the Options parameter.
+	if *options == (NameShowOptions{}) {
+		options = nil
+	}
+
 	return &NameShowCmd{
 		Name:    name,
 		Options: options,
