@@ -61,10 +61,10 @@ func NewNameShowCmd(name string, options *NameShowOptions) *NameShowCmd {
 type NameScanOptions struct {
 	NameEncoding  Encoding `json:"nameEncoding,omitempty"`
 	ValueEncoding Encoding `json:"valueEncoding,omitempty"`
-	MinConf       int32    `json:"minConf,omitempty"`
-	MaxConf       int32    `json:"maxConf,omitempty"`
+	MinConf       *int32   `json:"minConf,omitempty"`
+	MaxConf       *int32   `json:"maxConf,omitempty"`
 	Prefix        string   `json:"prefix,omitempty"`
-	RegExp        string   `json:"regexp,omitempty"`
+	RegExp        *string   `json:"regexp,omitempty"`
 }
 
 // NameScanCmd defines the name_scan JSON-RPC command.
