@@ -43,6 +43,13 @@ type NameShowCmd struct {
 // The parameters which are pointers indicate they are optional.  Passing nil
 // for optional parameters will use the default value.
 func NewNameShowCmd(name string, options *NameShowOptions) *NameShowCmd {
+	// Don't send the Options parameter if it's empty.  This saves some
+	// space on the wire, and also ensures compatibility with old Namecoin
+	// Core versions that don't support the Options parameter.
+	if *options == (NameShowOptions{}) {
+		options = nil
+	}
+
 	return &NameShowCmd{
 		Name:    name,
 		Options: options,
@@ -54,10 +61,10 @@ func NewNameShowCmd(name string, options *NameShowOptions) *NameShowCmd {
 type NameScanOptions struct {
 	NameEncoding  Encoding `json:"nameEncoding,omitempty"`
 	ValueEncoding Encoding `json:"valueEncoding,omitempty"`
-	MinConf       int32    `json:"minConf,omitempty"`
-	MaxConf       int32    `json:"maxConf,omitempty"`
+	MinConf       *int32   `json:"minConf,omitempty"`
+	MaxConf       *int32   `json:"maxConf,omitempty"`
 	Prefix        string   `json:"prefix,omitempty"`
-	RegExp        string   `json:"regexp,omitempty"`
+	RegExp        *string   `json:"regexp,omitempty"`
 }
 
 // NameScanCmd defines the name_scan JSON-RPC command.
@@ -73,6 +80,13 @@ type NameScanCmd struct {
 // The parameters which are pointers indicate they are optional.  Passing nil
 // for optional parameters will use the default value.
 func NewNameScanCmd(start string, count *uint32, options *NameScanOptions) *NameScanCmd {
+	// Don't send the Options parameter if it's empty.  This saves some
+	// space on the wire, and also ensures compatibility with old Namecoin
+	// Core versions that don't support the Options parameter.
+	if *options == (NameScanOptions{}) {
+		options = nil
+	}
+
 	return &NameScanCmd{
 		Start:   start,
 		Count:   count,
