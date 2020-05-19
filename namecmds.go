@@ -83,7 +83,7 @@ func NewNameScanCmd(start string, count *uint32, options *NameScanOptions) *Name
 	// Don't send the Options parameter if it's empty.  This saves some
 	// space on the wire, and also ensures compatibility with old Namecoin
 	// Core versions that don't support the Options parameter.
-	if *options == (NameScanOptions{}) {
+	if options != nil && *options == (NameScanOptions{}) {
 		options = nil
 	}
 
