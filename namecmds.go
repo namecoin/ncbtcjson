@@ -46,7 +46,7 @@ func NewNameShowCmd(name string, options *NameShowOptions) *NameShowCmd {
 	// Don't send the Options parameter if it's empty.  This saves some
 	// space on the wire, and also ensures compatibility with old Namecoin
 	// Core versions that don't support the Options parameter.
-	if *options == (NameShowOptions{}) {
+	if options != nil && *options == (NameShowOptions{}) {
 		options = nil
 	}
 
