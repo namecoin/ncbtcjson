@@ -64,7 +64,7 @@ type NameScanOptions struct {
 	MinConf       *int32   `json:"minConf,omitempty"`
 	MaxConf       *int32   `json:"maxConf,omitempty"`
 	Prefix        string   `json:"prefix,omitempty"`
-	RegExp        *string   `json:"regexp,omitempty"`
+	RegExp        *string  `json:"regexp,omitempty"`
 }
 
 // NameScanCmd defines the name_scan JSON-RPC command.
