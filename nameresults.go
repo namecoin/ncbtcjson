@@ -24,3 +24,6 @@ type NameShowResult struct {
 
 // NameScanResult models the data from the name_scan command.
 type NameScanResult []NameShowResult
+
+// NameListResult models the data from the name_list command.
+type NameListResult []NameShowResult
