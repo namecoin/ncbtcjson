@@ -19,8 +19,8 @@ type Encoding string
 
 const (
 	ASCII Encoding = "ascii"
-	UTF8           = "utf8"
-	Hex            = "hex"
+	UTF8  Encoding = "utf8"
+	Hex   Encoding = "hex"
 )
 
 // NameShowOptions represents the optional options struct provided with a
