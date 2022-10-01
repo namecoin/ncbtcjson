@@ -6,3 +6,5 @@ linters-settings:
       - prefix(github.com/namecoin)
   goimports:
     local-prefixes: "github.com/namecoin"
+  govet:
+    enable-all: true
