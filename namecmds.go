@@ -18,8 +18,8 @@ import (
 type Encoding string
 
 const (
-	Ascii Encoding = "ascii"
-	Utf8           = "utf8"
+	ASCII Encoding = "ascii"
+	UTF8           = "utf8"
 	Hex            = "hex"
 )
 
