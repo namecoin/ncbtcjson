@@ -18,9 +18,9 @@ import (
 type Encoding string
 
 const (
-	Ascii Encoding = "ascii"
-	Utf8           = "utf8"
-	Hex            = "hex"
+	ASCII Encoding = "ascii"
+	UTF8  Encoding = "utf8"
+	Hex   Encoding = "hex"
 )
 
 // NameShowOptions represents the optional options struct provided with a
@@ -33,8 +33,8 @@ type NameShowOptions struct {
 
 // NameShowCmd defines the name_show JSON-RPC command.
 type NameShowCmd struct {
-	Name    string
 	Options *NameShowOptions
+	Name    string
 }
 
 // NewNameShowCmd returns a new instance which can be used to issue a
@@ -63,15 +63,15 @@ type NameScanOptions struct {
 	ValueEncoding Encoding `json:"valueEncoding,omitempty"`
 	MinConf       *int32   `json:"minConf,omitempty"`
 	MaxConf       *int32   `json:"maxConf,omitempty"`
-	Prefix        string   `json:"prefix,omitempty"`
 	RegExp        *string  `json:"regexp,omitempty"`
+	Prefix        string   `json:"prefix,omitempty"`
 }
 
 // NameScanCmd defines the name_scan JSON-RPC command.
 type NameScanCmd struct {
-	Start   string
 	Count   *uint32
 	Options *NameScanOptions
+	Start   string
 }
 
 // NewNameScanCmd returns a new instance which can be used to issue a
