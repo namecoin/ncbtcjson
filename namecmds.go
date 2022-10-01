@@ -69,9 +69,9 @@ type NameScanOptions struct {
 
 // NameScanCmd defines the name_scan JSON-RPC command.
 type NameScanCmd struct {
-	Start   string
 	Count   *uint32
 	Options *NameScanOptions
+	Start   string
 }
 
 // NewNameScanCmd returns a new instance which can be used to issue a
