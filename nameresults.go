@@ -14,11 +14,11 @@ type NameShowResult struct {
 	ValueEncoding Encoding `json:"value_encoding"`
 	ValueError    string   `json:"value_error"`
 	TxID          string   `json:"txid"`
-	Vout          uint32   `json:"vout"`
 	Address       string   `json:"address"`
-	IsMine        bool     `json:"ismine"`
+	Vout          uint32   `json:"vout"`
 	Height        int32    `json:"height"`
 	ExpiresIn     int32    `json:"expires_in"`
+	IsMine        bool     `json:"ismine"`
 	Expired       bool     `json:"expired"`
 }
 
