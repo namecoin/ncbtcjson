@@ -42,14 +42,15 @@ task:
     cpu: 8
     memory: 8G
   install_script:
-    - go install github.com/mitchellh/gox@latest
+    # Fork of mitchellh/gox that supports libraries, see gox PR #115
+    - GO111MODULE=off go get github.com/dgsb/gox
   fetch_script:
     - go mod init github.com/"$CIRRUS_REPO_FULL_NAME"
     - go mod tidy
   build_script:
     - rm -rf idist
     # Nothing in this repo needs cgo.
-    - CGO_ENABLED=0 gox -tags="$GOX_TAGS" -parallel=8 -osarch 'darwin/amd64 linux/386 linux/amd64 linux/arm linux/arm64 linux/ppc64 linux/ppc64le freebsd/386 freebsd/amd64 freebsd/arm openbsd/386 openbsd/amd64 netbsd/386 netbsd/amd64 netbsd/arm dragonfly/amd64 solaris/amd64 windows/386 windows/amd64' -output "$GOPATH/releasing/idist/$CIRRUS_REPO_NAME-$CIRRUS_TAG-{{.OS}}_{{.Arch}}/bin/{{.Dir}}" github.com/$CIRRUS_REPO_FULL_NAME/...
+    - CGO_ENABLED=0 gox -build-lib -tags="$GOX_TAGS" -parallel=8 -osarch 'darwin/amd64 linux/386 linux/amd64 linux/arm linux/arm64 linux/ppc64 linux/ppc64le freebsd/386 freebsd/amd64 freebsd/arm openbsd/386 openbsd/amd64 netbsd/386 netbsd/amd64 netbsd/arm dragonfly/amd64 solaris/amd64 windows/386 windows/amd64' -output "$GOPATH/releasing/idist/$CIRRUS_REPO_NAME-$CIRRUS_TAG-{{.OS}}_{{.Arch}}/bin/{{.Dir}}" github.com/$CIRRUS_REPO_FULL_NAME/...
     - mv $GOPATH/releasing/idist ./idist
   env:
     GOX_TAGS: ""
