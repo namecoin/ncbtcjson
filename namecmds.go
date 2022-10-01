@@ -32,9 +32,11 @@ type NameShowOptions struct {
 }
 
 // NameShowCmd defines the name_show JSON-RPC command.
+//
+//nolint:govet // fieldalignment: order of fields has semantic value.
 type NameShowCmd struct {
-	Options *NameShowOptions
 	Name    string
+	Options *NameShowOptions
 }
 
 // NewNameShowCmd returns a new instance which can be used to issue a
@@ -68,10 +70,12 @@ type NameScanOptions struct {
 }
 
 // NameScanCmd defines the name_scan JSON-RPC command.
+//
+//nolint:govet // fieldalignment: order of fields has semantic value.
 type NameScanCmd struct {
+	Start   string
 	Count   *uint32
 	Options *NameScanOptions
-	Start   string
 }
 
 // NewNameScanCmd returns a new instance which can be used to issue a
