@@ -33,8 +33,8 @@ type NameShowOptions struct {
 
 // NameShowCmd defines the name_show JSON-RPC command.
 type NameShowCmd struct {
-	Name    string
 	Options *NameShowOptions
+	Name    string
 }
 
 // NewNameShowCmd returns a new instance which can be used to issue a
