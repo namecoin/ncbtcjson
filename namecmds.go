@@ -58,6 +58,17 @@ func NewNameShowCmd(name string, options *NameShowOptions) *NameShowCmd {
 	}
 }
 
+// NameListCmd defines the name_list JSON-RPC command.
+type NameListCmd struct {
+	Name string `json:"name,omitempty"`
+}
+
+// NewNameListCmd returns a new instance which can be used to issue a
+// name_list JSON-RPC command.
+func NewNameListCmd(name string) *NameListCmd {
+	return &NameListCmd{Name: name}
+}
+
 // NameScanOptions represents the optional options struct provided with a
 // NameScanCmd command.
 type NameScanOptions struct {
@@ -103,5 +114,6 @@ func init() {
 	flags := btcjson.UsageFlag(0)
 
 	btcjson.MustRegisterCmd("name_show", (*NameShowCmd)(nil), flags)
+	btcjson.MustRegisterCmd("name_list", (*NameListCmd)(nil), flags)
 	btcjson.MustRegisterCmd("name_scan", (*NameScanCmd)(nil), flags)
 }
